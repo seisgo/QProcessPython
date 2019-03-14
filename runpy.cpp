@@ -31,11 +31,21 @@ void RunPy::processPy(const QString &pyName, const QStringList &argList)
 
     QString workPath = fInfo.absolutePath();
     QString fileName = fInfo.fileName();
-    /** Note:
+    /** NOTE:
      *  With this setting, the fileName imported to QProcess::start() as one of
      *  arguments can be the pure file name without directory.
      */
     m_process->setWorkingDirectory(workPath);
+
+    /** NOTE:
+     *  The following setting about process environment is used to attempt to
+     *  run 'python' instead of 'python3.6' in QProcess.start(), while it seems
+     *  not working.
+     */
+//    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+//    env.insert("PYTHONHOME", "/usr/local/anaconda3/bin");
+//    env.insert("PYTHONLIB", "/usr/local/anaconda3/lib");
+//    m_process->setProcessEnvironment(env);
 
     //QC: Display some configuration information
     qDebug() << "Current Path: " << QDir::currentPath();

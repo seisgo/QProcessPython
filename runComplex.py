@@ -1,4 +1,6 @@
 import sys
+# Actually, the following operation is unnecessary. When python3.6 is executed
+# in terminal, its corresponding search path is accompanied.
 sys.path.append('/usr/local/anaconda3/lib/python3.6/site-packages')
 print(sys.path, flush=True)
 
